@@ -7,3 +7,7 @@ scikit-learn
 joblib
 streamlit
 plotly
+matplotlib
+ipykernel
+jupyter
+notebook
