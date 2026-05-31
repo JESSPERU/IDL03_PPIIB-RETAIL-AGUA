@@ -1,0 +1,166 @@
+﻿tabla,tipo_tabla,columna,tipo_dato_inferido,rol,descripcion,nulos,filas_tabla
+dim_producto,Dimensión,id_sku,TEXT,Clave de producto,Identificador único del SKU/producto.,0,3
+dim_producto,Dimensión,descripcion,TEXT,Atributo producto,Descripción del producto.,0,3
+dim_producto,Dimensión,categoria,TEXT,Atributo producto / Feature,Categoría del producto.,0,3
+dim_producto,Dimensión,volumen_litros,NUMERIC,Atributo producto / Feature,Volumen del producto en litros.,0,3
+dim_producto,Dimensión,unidad_medida,TEXT,Atributo producto,Unidad de medida.,0,3
+dim_producto,Dimensión,formato_envase,TEXT,Atributo producto / Feature,Formato de envase del producto.,0,3
+dim_producto,Dimensión,costo_unitario_base,NUMERIC,Atributo producto,Costo base unitario del producto.,0,3
+dim_producto,Dimensión,precio_lista,NUMERIC,Atributo producto,Precio de lista referencial.,0,3
+dim_producto,Dimensión,stock_seguridad,INTEGER,Parámetro inventario,Stock de seguridad definido para el producto.,0,3
+dim_producto,Dimensión,lead_time_dias,INTEGER,Parámetro logístico,Días estimados de reposición o abastecimiento.,0,3
+dim_producto,Dimensión,fecha_creacion,DATE/TIMESTAMP,Auditoría,Fecha de creación del registro.,0,3
+dim_producto,Dimensión,fecha_modificacion,DATE/TIMESTAMP,Auditoría,Fecha de última modificación o carga.,0,3
+dim_producto,Dimensión,usuario_modificacion,TEXT,Auditoría,Usuario o proceso que modificó el registro.,0,3
+dim_tiempo,Dimensión,fecha,DATE/TIMESTAMP,Clave temporal,Fecha diaria del registro.,0,366
+dim_tiempo,Dimensión,anio,INTEGER,Atributo calendario,Año de la fecha.,0,366
+dim_tiempo,Dimensión,mes,INTEGER,Feature calendario,Mes numérico.,0,366
+dim_tiempo,Dimensión,trimestre,INTEGER,Feature calendario,Trimestre del año.,0,366
+dim_tiempo,Dimensión,numero_dia_semana,INTEGER,Feature calendario,Número del día de la semana.,0,366
+dim_tiempo,Dimensión,nombre_dia,TEXT,Atributo calendario,Nombre del día de la semana.,0,366
+dim_tiempo,Dimensión,es_fin_de_semana,BOOLEAN,Feature calendario,Indica si la fecha cae en fin de semana.,0,366
+dim_tiempo,Dimensión,es_feriado,BOOLEAN,Feature calendario,Indica si la fecha es feriado.,0,366
+dim_tiempo,Dimensión,nombre_feriado,TEXT,Atributo calendario,"Nombre del feriado, si aplica.",354,366
+dim_tiempo,Dimensión,es_quincena,BOOLEAN,Feature calendario,Indica si la fecha cae en periodo de quincena.,0,366
+dim_tiempo,Dimensión,es_fin_mes,BOOLEAN,Feature calendario,Indica si la fecha corresponde a fin de mes.,0,366
+dim_tiempo,Dimensión,temporada,TEXT,Feature calendario,Temporada o estación comercial.,0,366
+dim_tiempo,Dimensión,temperatura_promedio_celsius,NUMERIC,Feature clima,Temperatura promedio diaria.,0,366
+dim_tiempo,Dimensión,temperatura_maxima_celsius,NUMERIC,Feature clima,Temperatura máxima diaria.,0,366
+dim_tiempo,Dimensión,temperatura_minima_celsius,NUMERIC,Feature clima,Temperatura mínima diaria.,0,366
+dim_tiempo,Dimensión,humedad_porcentaje,NUMERIC,Feature clima,Porcentaje de humedad diaria.,0,366
+dim_tiempo,Dimensión,precipitacion_mm,NUMERIC,Feature clima,Precipitación diaria en milímetros.,0,366
+dim_tiempo,Dimensión,alerta_ola_calor,BOOLEAN,Feature clima / Alerta,Indica si hubo o se espera ola de calor.,0,366
+dim_tiempo,Dimensión,fuente_clima,TEXT,Atributo clima,Fuente del dato climático.,0,366
+dim_tiempo,Dimensión,fecha_creacion,DATE/TIMESTAMP,Auditoría,Fecha de creación del registro.,0,366
+dim_tiempo,Dimensión,fecha_modificacion,DATE/TIMESTAMP,Auditoría,Fecha de última modificación o carga.,0,366
+dim_tiempo,Dimensión,usuario_modificacion,TEXT,Auditoría,Usuario o proceso que modificó el registro.,0,366
+fact_inventario,Hecho,fecha,DATE/TIMESTAMP,Clave temporal,Fecha diaria del registro.,0,1098
+fact_inventario,Hecho,id_sku,TEXT,Clave de producto,Identificador único del SKU/producto.,0,1098
+fact_inventario,Hecho,stock_inicial_sistema,INTEGER,Métrica inventario,Stock inicial registrado por el sistema.,0,1098
+fact_inventario,Hecho,ingresos_almacen,INTEGER,Métrica inventario / Feature,Unidades ingresadas al almacén.,0,1098
+fact_inventario,Hecho,stock_apertura,INTEGER,Feature inventario,Stock disponible al inicio del día. Es válido como feature porque existe antes de la venta.,0,1098
+fact_inventario,Hecho,stock_disponible_cierre,INTEGER,Métrica inventario / Diagnóstico,Stock al cierre del día. No debe usarse como feature predictiva del mismo día para evitar fuga de datos.,0,1098
+fact_inventario,Hecho,stock_minimo,INTEGER,Parámetro inventario,Nivel mínimo de stock para alertas.,0,1098
+fact_inventario,Hecho,costo_unitario,NUMERIC,Métrica costo,Costo unitario del producto para inventario.,0,1098
+fact_inventario,Hecho,quiebre_stock_flag,BOOLEAN,Alerta inventario,Indica si hubo quiebre de stock.,0,1098
+fact_inventario,Hecho,flag_stock_bajo,BOOLEAN,Alerta inventario,Indica si el stock estuvo por debajo del mínimo.,0,1098
+fact_inventario,Hecho,fecha_creacion,DATE/TIMESTAMP,Auditoría,Fecha de creación del registro.,0,1098
+fact_inventario,Hecho,fecha_modificacion,DATE/TIMESTAMP,Auditoría,Fecha de última modificación o carga.,0,1098
+fact_inventario,Hecho,usuario_modificacion,TEXT,Auditoría,Usuario o proceso que modificó el registro.,0,1098
+fact_marketing,Hecho,fecha,DATE/TIMESTAMP,Clave temporal,Fecha diaria del registro.,0,672
+fact_marketing,Hecho,id_campana,TEXT,Clave de campaña,Identificador de campaña publicitaria.,0,672
+fact_marketing,Hecho,plataforma_origen,TEXT,Atributo marketing,"Plataforma de Ads: Meta, Google, TikTok u otra.",0,672
+fact_marketing,Hecho,inversion_usd,NUMERIC,Métrica marketing,Inversión publicitaria diaria en dólares.,0,672
+fact_marketing,Hecho,impresiones,INTEGER,Métrica marketing,Cantidad de impresiones publicitarias.,0,672
+fact_marketing,Hecho,clics,INTEGER,Métrica marketing,Cantidad de clics generados por la campaña.,0,672
+fact_marketing,Hecho,conversiones_atribuidas,INTEGER,Métrica marketing,Conversiones atribuidas a la campaña.,0,672
+fact_marketing,Hecho,fecha_creacion,DATE/TIMESTAMP,Auditoría,Fecha de creación del registro.,0,672
+fact_marketing,Hecho,fecha_modificacion,DATE/TIMESTAMP,Auditoría,Fecha de última modificación o carga.,0,672
+fact_marketing,Hecho,usuario_modificacion,TEXT,Auditoría,Usuario o proceso que modificó el registro.,0,672
+fact_ventas_diarias,Hecho,fecha,DATE/TIMESTAMP,Clave temporal,Fecha diaria del registro.,0,3123
+fact_ventas_diarias,Hecho,id_sku,TEXT,Clave de producto,Identificador único del SKU/producto.,0,3123
+fact_ventas_diarias,Hecho,id_canal,TEXT,Clave de canal,Identificador del canal de venta.,0,3123
+fact_ventas_diarias,Hecho,id_campana,TEXT,Clave de campaña,Identificador de campaña publicitaria.,0,3123
+fact_ventas_diarias,Hecho,cantidad_vendida_total,INTEGER,Target / Métrica,Cantidad total vendida. En ml_dataset es la variable objetivo a predecir.,0,3123
+fact_ventas_diarias,Hecho,venta_total,NUMERIC,Métrica monetaria,Importe total vendido.,0,3123
+fact_ventas_diarias,Hecho,precio_unitario_promedio,NUMERIC,Feature / Métrica,Precio promedio aplicado en las ventas del día.,0,3123
+fact_ventas_diarias,Hecho,descuento_total,NUMERIC,Métrica / Feature,Monto total de descuento aplicado.,0,3123
+fact_ventas_diarias,Hecho,porcentaje_descuento_promedio,NUMERIC,Métrica / Feature,Porcentaje promedio de descuento.,0,3123
+fact_ventas_diarias,Hecho,numero_transacciones,INTEGER,Campo,Campo `numero_transacciones` de la tabla `fact_ventas_diarias`.,0,3123
+fact_ventas_diarias,Hecho,fecha_creacion,DATE/TIMESTAMP,Auditoría,Fecha de creación del registro.,0,3123
+fact_ventas_diarias,Hecho,fecha_modificacion,DATE/TIMESTAMP,Auditoría,Fecha de última modificación o carga.,0,3123
+fact_ventas_diarias,Hecho,usuario_modificacion,TEXT,Auditoría,Usuario o proceso que modificó el registro.,0,3123
+ml_dataset,ML entrenamiento,fecha,DATE/TIMESTAMP,Clave temporal,Fecha diaria del registro.,0,1098
+ml_dataset,ML entrenamiento,id_sku,TEXT,Clave de producto,Identificador único del SKU/producto.,0,1098
+ml_dataset,ML entrenamiento,categoria,TEXT,Atributo producto / Feature,Categoría del producto.,0,1098
+ml_dataset,ML entrenamiento,volumen_litros,NUMERIC,Atributo producto / Feature,Volumen del producto en litros.,0,1098
+ml_dataset,ML entrenamiento,formato_envase,TEXT,Atributo producto / Feature,Formato de envase del producto.,0,1098
+ml_dataset,ML entrenamiento,cantidad_vendida_total,INTEGER,Target / Métrica,Cantidad total vendida. En ml_dataset es la variable objetivo a predecir.,0,1098
+ml_dataset,ML entrenamiento,stock_apertura,INTEGER,Feature inventario,Stock disponible al inicio del día. Es válido como feature porque existe antes de la venta.,0,1098
+ml_dataset,ML entrenamiento,ingresos_almacen,INTEGER,Métrica inventario / Feature,Unidades ingresadas al almacén.,0,1098
+ml_dataset,ML entrenamiento,stock_disponible_cierre,INTEGER,Métrica inventario / Diagnóstico,Stock al cierre del día. No debe usarse como feature predictiva del mismo día para evitar fuga de datos.,0,1098
+ml_dataset,ML entrenamiento,stock_minimo,INTEGER,Parámetro inventario,Nivel mínimo de stock para alertas.,0,1098
+ml_dataset,ML entrenamiento,precio_unitario_promedio,NUMERIC,Feature / Métrica,Precio promedio aplicado en las ventas del día.,0,1098
+ml_dataset,ML entrenamiento,descuento_total,NUMERIC,Métrica / Feature,Monto total de descuento aplicado.,0,1098
+ml_dataset,ML entrenamiento,porcentaje_descuento_promedio,NUMERIC,Métrica / Feature,Porcentaje promedio de descuento.,0,1098
+ml_dataset,ML entrenamiento,inversion_ads_total,NUMERIC,Feature marketing,Inversión total de Ads agregada por día.,0,1098
+ml_dataset,ML entrenamiento,clics_total,INTEGER,Feature marketing,Clics totales agregados por día.,0,1098
+ml_dataset,ML entrenamiento,impresiones_total,INTEGER,Feature marketing,Impresiones totales agregadas por día.,0,1098
+ml_dataset,ML entrenamiento,conversiones_total,INTEGER,Feature marketing,Conversiones totales agregadas por día.,0,1098
+ml_dataset,ML entrenamiento,temperatura_promedio_celsius,NUMERIC,Feature clima,Temperatura promedio diaria.,0,1098
+ml_dataset,ML entrenamiento,temperatura_maxima_celsius,NUMERIC,Feature clima,Temperatura máxima diaria.,0,1098
+ml_dataset,ML entrenamiento,humedad_porcentaje,NUMERIC,Feature clima,Porcentaje de humedad diaria.,0,1098
+ml_dataset,ML entrenamiento,precipitacion_mm,NUMERIC,Feature clima,Precipitación diaria en milímetros.,0,1098
+ml_dataset,ML entrenamiento,alerta_ola_calor,BOOLEAN,Feature clima / Alerta,Indica si hubo o se espera ola de calor.,0,1098
+ml_dataset,ML entrenamiento,numero_dia_semana,INTEGER,Feature calendario,Número del día de la semana.,0,1098
+ml_dataset,ML entrenamiento,mes,INTEGER,Feature calendario,Mes numérico.,0,1098
+ml_dataset,ML entrenamiento,trimestre,INTEGER,Feature calendario,Trimestre del año.,0,1098
+ml_dataset,ML entrenamiento,es_fin_de_semana,BOOLEAN,Feature calendario,Indica si la fecha cae en fin de semana.,0,1098
+ml_dataset,ML entrenamiento,es_feriado,BOOLEAN,Feature calendario,Indica si la fecha es feriado.,0,1098
+ml_dataset,ML entrenamiento,es_quincena,BOOLEAN,Feature calendario,Indica si la fecha cae en periodo de quincena.,0,1098
+ml_dataset,ML entrenamiento,es_fin_mes,BOOLEAN,Feature calendario,Indica si la fecha corresponde a fin de mes.,0,1098
+ml_dataset,ML entrenamiento,temporada,TEXT,Feature calendario,Temporada o estación comercial.,0,1098
+ml_dataset,ML entrenamiento,ventas_lag1,INTEGER,Feature histórica,Ventas del SKU en el día anterior.,0,1098
+ml_dataset,ML entrenamiento,ventas_lag7,INTEGER,Feature histórica,Ventas del SKU hace 7 días.,0,1098
+ml_dataset,ML entrenamiento,ventas_roll7,NUMERIC,Feature histórica,Promedio móvil de ventas de los últimos 7 días.,0,1098
+ml_dataset,ML entrenamiento,ads_lag1,NUMERIC,Feature marketing rezagada,Inversión Ads del día anterior.,0,1098
+ml_dataset,ML entrenamiento,ads_lag3,NUMERIC,Feature marketing rezagada,Inversión Ads de hace 3 días.,0,1098
+ml_dataset,ML entrenamiento,riesgo_demanda_censurada,BOOLEAN,Alerta ML,Indica posible demanda no observada por falta de stock.,0,1098
+ml_dataset,ML entrenamiento,fecha_creacion,DATE/TIMESTAMP,Auditoría,Fecha de creación del registro.,0,1098
+ml_dataset,ML entrenamiento,fecha_modificacion,DATE/TIMESTAMP,Auditoría,Fecha de última modificación o carga.,0,1098
+ml_dataset,ML entrenamiento,usuario_modificacion,TEXT,Auditoría,Usuario o proceso que modificó el registro.,0,1098
+ml_score_input,ML scoring,id_score_input,INTEGER,Clave técnica ML,Identificador del registro de entrada para scoring.,0,3
+ml_score_input,ML scoring,fecha_objetivo,DATE/TIMESTAMP,Clave temporal futura,Fecha para la cual se desea generar la predicción.,0,3
+ml_score_input,ML scoring,id_sku,TEXT,Clave de producto,Identificador único del SKU/producto.,0,3
+ml_score_input,ML scoring,categoria,TEXT,Atributo producto / Feature,Categoría del producto.,0,3
+ml_score_input,ML scoring,volumen_litros,NUMERIC,Atributo producto / Feature,Volumen del producto en litros.,0,3
+ml_score_input,ML scoring,formato_envase,TEXT,Atributo producto / Feature,Formato de envase del producto.,0,3
+ml_score_input,ML scoring,stock_apertura,INTEGER,Feature inventario,Stock disponible al inicio del día. Es válido como feature porque existe antes de la venta.,0,3
+ml_score_input,ML scoring,ingresos_almacen,INTEGER,Métrica inventario / Feature,Unidades ingresadas al almacén.,0,3
+ml_score_input,ML scoring,precio_unitario_estimado,NUMERIC,Feature futura,Precio estimado que se usará para predecir.,0,3
+ml_score_input,ML scoring,descuento_estimado,NUMERIC,Feature futura,Descuento planificado o estimado para la predicción.,0,3
+ml_score_input,ML scoring,inversion_ads_planificada,NUMERIC,Feature futura,Inversión publicitaria planificada para la fecha objetivo.,0,3
+ml_score_input,ML scoring,clics_estimados,INTEGER,Feature futura,Clics estimados para la predicción.,0,3
+ml_score_input,ML scoring,impresiones_estimadas,INTEGER,Feature futura,Impresiones estimadas para la predicción.,0,3
+ml_score_input,ML scoring,temperatura_promedio_estimada,NUMERIC,Feature futura clima,Temperatura promedio estimada para la predicción.,0,3
+ml_score_input,ML scoring,temperatura_maxima_estimada,NUMERIC,Feature futura clima,Temperatura máxima estimada para la predicción.,0,3
+ml_score_input,ML scoring,humedad_porcentaje_estimada,NUMERIC,Feature futura clima,Humedad estimada para la predicción.,0,3
+ml_score_input,ML scoring,precipitacion_mm_estimada,NUMERIC,Feature futura clima,Precipitación estimada para la predicción.,0,3
+ml_score_input,ML scoring,alerta_ola_calor,BOOLEAN,Feature clima / Alerta,Indica si hubo o se espera ola de calor.,0,3
+ml_score_input,ML scoring,numero_dia_semana,INTEGER,Feature calendario,Número del día de la semana.,0,3
+ml_score_input,ML scoring,mes,INTEGER,Feature calendario,Mes numérico.,0,3
+ml_score_input,ML scoring,trimestre,INTEGER,Feature calendario,Trimestre del año.,0,3
+ml_score_input,ML scoring,es_fin_de_semana,BOOLEAN,Feature calendario,Indica si la fecha cae en fin de semana.,0,3
+ml_score_input,ML scoring,es_feriado,BOOLEAN,Feature calendario,Indica si la fecha es feriado.,0,3
+ml_score_input,ML scoring,es_quincena,BOOLEAN,Feature calendario,Indica si la fecha cae en periodo de quincena.,0,3
+ml_score_input,ML scoring,es_fin_mes,BOOLEAN,Feature calendario,Indica si la fecha corresponde a fin de mes.,0,3
+ml_score_input,ML scoring,temporada,TEXT,Feature calendario,Temporada o estación comercial.,0,3
+ml_score_input,ML scoring,ventas_lag1,INTEGER,Feature histórica,Ventas del SKU en el día anterior.,0,3
+ml_score_input,ML scoring,ventas_lag7,INTEGER,Feature histórica,Ventas del SKU hace 7 días.,0,3
+ml_score_input,ML scoring,ventas_roll7,NUMERIC,Feature histórica,Promedio móvil de ventas de los últimos 7 días.,0,3
+ml_score_input,ML scoring,ads_lag1,NUMERIC,Feature marketing rezagada,Inversión Ads del día anterior.,0,3
+ml_score_input,ML scoring,ads_lag3,NUMERIC,Feature marketing rezagada,Inversión Ads de hace 3 días.,0,3
+ml_score_input,ML scoring,fecha_creacion,DATE/TIMESTAMP,Auditoría,Fecha de creación del registro.,0,3
+ml_score_input,ML scoring,usuario_modificacion,TEXT,Auditoría,Usuario o proceso que modificó el registro.,0,3
+ml_score_output,ML resultado,id_score_output,TEXT,Clave técnica ML,Identificador del resultado de predicción.,0,0
+ml_score_output,ML resultado,fecha_prediccion,DATE/TIMESTAMP,Auditoría ML,Fecha y hora en que se generó la predicción.,0,0
+ml_score_output,ML resultado,fecha_objetivo,DATE/TIMESTAMP,Clave temporal futura,Fecha para la cual se desea generar la predicción.,0,0
+ml_score_output,ML resultado,id_sku,TEXT,Clave de producto,Identificador único del SKU/producto.,0,0
+ml_score_output,ML resultado,cantidad_predicha,TEXT,Predicción,Demanda estimada por el modelo.,0,0
+ml_score_output,ML resultado,intervalo_bajo,TEXT,Predicción,Límite inferior estimado de la demanda.,0,0
+ml_score_output,ML resultado,intervalo_alto,TEXT,Predicción,Límite superior estimado de la demanda.,0,0
+ml_score_output,ML resultado,stock_apertura,TEXT,Feature inventario,Stock disponible al inicio del día. Es válido como feature porque existe antes de la venta.,0,0
+ml_score_output,ML resultado,stock_recomendado,TEXT,Recomendación,Stock sugerido con margen de seguridad.,0,0
+ml_score_output,ML resultado,riesgo_quiebre_stock,TEXT,Alerta predictiva,Indica si el stock proyectado es menor a la demanda predicha.,0,0
+ml_score_output,ML resultado,riesgo_sobrestock,TEXT,Alerta predictiva,Indica si el stock proyectado supera ampliamente la demanda predicha.,0,0
+ml_score_output,ML resultado,modelo_version,TEXT,Control ML,Versión del modelo que generó el resultado.,0,0
+ml_score_output,ML resultado,comentario_negocio,TEXT,Explicación de negocio,Texto interpretativo de la predicción.,0,0
+ml_score_output,ML resultado,fecha_creacion,DATE/TIMESTAMP,Auditoría,Fecha de creación del registro.,0,0
+ml_score_output,ML resultado,usuario_modificacion,TEXT,Auditoría,Usuario o proceso que modificó el registro.,0,0
+ml_feature_importance,ML explicabilidad,id_importance,TEXT,Clave técnica ML,Identificador de importancia de variable.,0,0
+ml_feature_importance,ML explicabilidad,modelo_version,TEXT,Control ML,Versión del modelo que generó el resultado.,0,0
+ml_feature_importance,ML explicabilidad,feature_name,TEXT,Explicabilidad,Nombre de la variable usada por el modelo.,0,0
+ml_feature_importance,ML explicabilidad,importance_value,TEXT,Explicabilidad,Peso o importancia relativa de la variable.,0,0
+ml_feature_importance,ML explicabilidad,ranking,TEXT,Explicabilidad,Orden de importancia de la variable.,0,0
+ml_feature_importance,ML explicabilidad,fecha_entrenamiento,DATE/TIMESTAMP,Auditoría ML,Fecha de entrenamiento del modelo.,0,0
+ml_feature_importance,ML explicabilidad,usuario_ejecucion,TEXT,Auditoría,Usuario que ejecutó el proceso.,0,0
