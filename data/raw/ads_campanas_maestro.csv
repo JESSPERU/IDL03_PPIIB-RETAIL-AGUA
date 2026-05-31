@@ -1,0 +1,37 @@
+﻿id_campana,nombre_campana,plataforma_origen,objetivo_campana,id_sku_objetivo,fecha_inicio,fecha_fin,tipo_audiencia,etl_source_file,etl_loaded_at
+CAMP_001,Meta_01_TODOS_agua,Meta Ads,Conversiones,TODOS,2024-01-05,2024-01-28,Always On,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_002,Google_01_SKU_500ML_agua,Google Ads,Reconocimiento,SKU_500ML,2024-01-05,2024-01-21,Prospeccion,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_003,TikTok_01_SKU_1L_agua,TikTok Ads,Tráfico,SKU_1L,2024-01-03,2024-01-16,Always On,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_004,Meta_02_SKU_1L_agua,Meta Ads,Reconocimiento,SKU_1L,2024-02-03,2024-02-19,Prospeccion,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_005,Google_02_SKU_20L_agua,Google Ads,Reconocimiento,SKU_20L,2024-02-02,2024-02-24,Remarketing,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_006,TikTok_02_TODOS_agua,TikTok Ads,Tráfico,TODOS,2024-02-03,2024-02-28,Prospeccion,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_007,Meta_03_TODOS_agua,Meta Ads,Tráfico,TODOS,2024-03-03,2024-03-15,Remarketing,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_008,Google_03_SKU_1L_agua,Google Ads,Reconocimiento,SKU_1L,2024-03-03,2024-03-17,Remarketing,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_009,TikTok_03_TODOS_agua,TikTok Ads,Tráfico,TODOS,2024-03-05,2024-03-17,Prospeccion,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_010,Meta_04_SKU_1L_agua,Meta Ads,Conversiones,SKU_1L,2024-04-05,2024-04-17,Always On,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_011,Google_04_SKU_1L_agua,Google Ads,Tráfico,SKU_1L,2024-04-04,2024-04-18,Remarketing,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_012,TikTok_04_SKU_20L_agua,TikTok Ads,Tráfico,SKU_20L,2024-04-01,2024-04-18,Always On,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_013,Meta_05_SKU_1L_agua,Meta Ads,Reconocimiento,SKU_1L,2024-05-01,2024-05-18,Remarketing,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_014,Google_05_SKU_1L_agua,Google Ads,Tráfico,SKU_1L,2024-05-02,2024-05-27,Prospeccion,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_015,TikTok_05_TODOS_agua,TikTok Ads,Reconocimiento,TODOS,2024-05-01,2024-05-15,Remarketing,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_016,Meta_06_TODOS_agua,Meta Ads,Tráfico,TODOS,2024-06-02,2024-06-18,Always On,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_017,Google_06_SKU_500ML_agua,Google Ads,Tráfico,SKU_500ML,2024-06-04,2024-06-29,Remarketing,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_018,TikTok_06_SKU_1L_agua,TikTok Ads,Conversiones,SKU_1L,2024-06-02,2024-06-27,Remarketing,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_019,Meta_07_SKU_20L_agua,Meta Ads,Tráfico,SKU_20L,2024-07-02,2024-07-17,Always On,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_020,Google_07_SKU_1L_agua,Google Ads,Conversiones,SKU_1L,2024-07-04,2024-07-21,Prospeccion,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_021,TikTok_07_SKU_20L_agua,TikTok Ads,Reconocimiento,SKU_20L,2024-07-03,2024-07-25,Remarketing,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_022,Meta_08_SKU_20L_agua,Meta Ads,Conversiones,SKU_20L,2024-08-01,2024-08-14,Prospeccion,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_023,Google_08_SKU_20L_agua,Google Ads,Reconocimiento,SKU_20L,2024-08-01,2024-08-14,Remarketing,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_024,TikTok_08_SKU_20L_agua,TikTok Ads,Reconocimiento,SKU_20L,2024-08-03,2024-08-21,Always On,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_025,Meta_09_SKU_500ML_agua,Meta Ads,Tráfico,SKU_500ML,2024-09-04,2024-09-25,Remarketing,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_026,Google_09_SKU_500ML_agua,Google Ads,Reconocimiento,SKU_500ML,2024-09-04,2024-09-16,Always On,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_027,TikTok_09_SKU_1L_agua,TikTok Ads,Tráfico,SKU_1L,2024-09-03,2024-09-21,Always On,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_028,Meta_10_SKU_20L_agua,Meta Ads,Reconocimiento,SKU_20L,2024-10-05,2024-10-22,Prospeccion,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_029,Google_10_SKU_20L_agua,Google Ads,Reconocimiento,SKU_20L,2024-10-05,2024-10-21,Remarketing,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_030,TikTok_10_SKU_20L_agua,TikTok Ads,Conversiones,SKU_20L,2024-10-04,2024-10-27,Always On,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_031,Meta_11_SKU_1L_agua,Meta Ads,Reconocimiento,SKU_1L,2024-11-02,2024-11-20,Remarketing,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_032,Google_11_SKU_1L_agua,Google Ads,Conversiones,SKU_1L,2024-11-05,2024-11-26,Remarketing,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_033,TikTok_11_SKU_500ML_agua,TikTok Ads,Tráfico,SKU_500ML,2024-11-03,2024-11-19,Remarketing,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_034,Meta_12_SKU_20L_agua,Meta Ads,Conversiones,SKU_20L,2024-12-04,2024-12-23,Always On,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_035,Google_12_SKU_1L_agua,Google Ads,Reconocimiento,SKU_1L,2024-12-05,2024-12-24,Prospeccion,ads_campanas_maestro.csv,2026-05-30 00:00:00
+CAMP_036,TikTok_12_SKU_500ML_agua,TikTok Ads,Reconocimiento,SKU_500ML,2024-12-03,2024-12-23,Always On,ads_campanas_maestro.csv,2026-05-30 00:00:00

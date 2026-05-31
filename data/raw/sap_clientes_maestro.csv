@@ -1,0 +1,121 @@
+﻿id_cliente,nombre_empresa,tipo_cliente,distrito,ubicacion,etl_source_file,etl_loaded_at
+CLI_0001,Bodega Cliente 001,Bodega,San Borja,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0002,Hogar Cliente 002,Minimarket,La Molina,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0003,Minimarket Cliente 003,Bodega,Pueblo Libre,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0004,Restaurante Cliente 004,Bodega,Magdalena,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0005,Oficina Cliente 005,Bodega,Miraflores,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0006,Bodega Cliente 006,Minimarket,La Molina,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0007,Restaurante Cliente 007,Restaurante,Miraflores,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0008,Restaurante Cliente 008,Minimarket,San Borja,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0009,Restaurante Cliente 009,Oficina,La Molina,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0010,Oficina Cliente 010,Restaurante,San Miguel,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0011,Bodega Cliente 011,Minimarket,San Borja,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0012,Oficina Cliente 012,Hogar,San Miguel,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0013,Minimarket Cliente 013,Minimarket,Jesus Maria,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0014,Bodega Cliente 014,Bodega,Lince,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0015,Bodega Cliente 015,Hogar,Jesus Maria,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0016,Restaurante Cliente 016,Hogar,Miraflores,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0017,Oficina Cliente 017,Restaurante,San Isidro,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0018,Oficina Cliente 018,Bodega,Barranco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0019,Hogar Cliente 019,Restaurante,Jesus Maria,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0020,Restaurante Cliente 020,Minimarket,San Borja,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0021,Bodega Cliente 021,Bodega,Pueblo Libre,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0022,Minimarket Cliente 022,Hogar,San Isidro,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0023,Minimarket Cliente 023,Bodega,Lince,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0024,Hogar Cliente 024,Oficina,Pueblo Libre,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0025,Hogar Cliente 025,Minimarket,Jesus Maria,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0026,Hogar Cliente 026,Minimarket,Pueblo Libre,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0027,Hogar Cliente 027,Bodega,Magdalena,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0028,Minimarket Cliente 028,Restaurante,San Borja,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0029,Minimarket Cliente 029,Minimarket,Chorrillos,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0030,Oficina Cliente 030,Hogar,Pueblo Libre,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0031,Restaurante Cliente 031,Minimarket,Pueblo Libre,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0032,Hogar Cliente 032,Bodega,La Molina,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0033,Bodega Cliente 033,Hogar,Lince,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0034,Hogar Cliente 034,Bodega,La Molina,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0035,Restaurante Cliente 035,Hogar,La Molina,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0036,Oficina Cliente 036,Oficina,Pueblo Libre,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0037,Oficina Cliente 037,Minimarket,San Miguel,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0038,Minimarket Cliente 038,Minimarket,San Borja,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0039,Restaurante Cliente 039,Restaurante,San Miguel,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0040,Restaurante Cliente 040,Oficina,Magdalena,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0041,Oficina Cliente 041,Hogar,La Molina,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0042,Minimarket Cliente 042,Restaurante,Chorrillos,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0043,Bodega Cliente 043,Bodega,San Isidro,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0044,Minimarket Cliente 044,Minimarket,Pueblo Libre,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0045,Oficina Cliente 045,Restaurante,San Isidro,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0046,Oficina Cliente 046,Oficina,Magdalena,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0047,Oficina Cliente 047,Restaurante,San Miguel,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0048,Restaurante Cliente 048,Bodega,Pueblo Libre,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0049,Bodega Cliente 049,Restaurante,San Miguel,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0050,Hogar Cliente 050,Bodega,San Miguel,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0051,Oficina Cliente 051,Minimarket,Chorrillos,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0052,Bodega Cliente 052,Hogar,Barranco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0053,Minimarket Cliente 053,Restaurante,San Isidro,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0054,Hogar Cliente 054,Restaurante,Magdalena,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0055,Minimarket Cliente 055,Minimarket,Jesus Maria,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0056,Minimarket Cliente 056,Restaurante,Barranco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0057,Bodega Cliente 057,Restaurante,Jesus Maria,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0058,Oficina Cliente 058,Bodega,San Isidro,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0059,Hogar Cliente 059,Hogar,La Molina,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0060,Bodega Cliente 060,Minimarket,Magdalena,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0061,Bodega Cliente 061,Bodega,San Borja,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0062,Oficina Cliente 062,Bodega,Barranco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0063,Minimarket Cliente 063,Minimarket,Pueblo Libre,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0064,Oficina Cliente 064,Restaurante,Surco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0065,Hogar Cliente 065,Restaurante,Magdalena,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0066,Oficina Cliente 066,Minimarket,Barranco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0067,Minimarket Cliente 067,Hogar,Lince,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0068,Hogar Cliente 068,Oficina,Barranco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0069,Oficina Cliente 069,Bodega,La Molina,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0070,Minimarket Cliente 070,Bodega,Jesus Maria,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0071,Bodega Cliente 071,Restaurante,Barranco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0072,Minimarket Cliente 072,Restaurante,La Molina,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0073,Bodega Cliente 073,Bodega,San Borja,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0074,Bodega Cliente 074,Minimarket,San Isidro,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0075,Bodega Cliente 075,Hogar,San Isidro,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0076,Restaurante Cliente 076,Minimarket,San Miguel,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0077,Oficina Cliente 077,Minimarket,Barranco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0078,Minimarket Cliente 078,Restaurante,Magdalena,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0079,Oficina Cliente 079,Minimarket,Chorrillos,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0080,Oficina Cliente 080,Minimarket,San Isidro,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0081,Bodega Cliente 081,Oficina,Jesus Maria,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0082,Oficina Cliente 082,Oficina,Chorrillos,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0083,Bodega Cliente 083,Bodega,Miraflores,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0084,Oficina Cliente 084,Hogar,San Isidro,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0085,Minimarket Cliente 085,Minimarket,La Molina,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0086,Restaurante Cliente 086,Oficina,Surco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0087,Oficina Cliente 087,Minimarket,San Miguel,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0088,Oficina Cliente 088,Minimarket,San Isidro,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0089,Oficina Cliente 089,Restaurante,San Isidro,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0090,Bodega Cliente 090,Restaurante,Miraflores,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0091,Bodega Cliente 091,Minimarket,Surco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0092,Oficina Cliente 092,Oficina,Chorrillos,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0093,Minimarket Cliente 093,Oficina,Miraflores,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0094,Minimarket Cliente 094,Oficina,Miraflores,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0095,Oficina Cliente 095,Hogar,Chorrillos,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0096,Hogar Cliente 096,Oficina,San Borja,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0097,Restaurante Cliente 097,Oficina,Surco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0098,Minimarket Cliente 098,Hogar,La Molina,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0099,Bodega Cliente 099,Restaurante,San Borja,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0100,Restaurante Cliente 100,Bodega,San Borja,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0101,Hogar Cliente 101,Bodega,Miraflores,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0102,Restaurante Cliente 102,Oficina,Barranco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0103,Restaurante Cliente 103,Minimarket,Miraflores,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0104,Restaurante Cliente 104,Bodega,Surco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0105,Bodega Cliente 105,Restaurante,San Isidro,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0106,Minimarket Cliente 106,Oficina,San Isidro,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0107,Restaurante Cliente 107,Minimarket,Magdalena,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0108,Restaurante Cliente 108,Bodega,Magdalena,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0109,Bodega Cliente 109,Oficina,Pueblo Libre,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0110,Restaurante Cliente 110,Restaurante,Barranco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0111,Hogar Cliente 111,Hogar,La Molina,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0112,Hogar Cliente 112,Minimarket,San Miguel,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0113,Oficina Cliente 113,Minimarket,Pueblo Libre,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0114,Hogar Cliente 114,Oficina,Jesus Maria,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0115,Bodega Cliente 115,Bodega,Chorrillos,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0116,Restaurante Cliente 116,Restaurante,San Isidro,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0117,Bodega Cliente 117,Restaurante,La Molina,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0118,Restaurante Cliente 118,Hogar,Surco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0119,Hogar Cliente 119,Bodega,La Molina,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00
+CLI_0120,Hogar Cliente 120,Hogar,Surco,Lima Metropolitana,sap_clientes_maestro.csv,2026-05-30 00:00:00

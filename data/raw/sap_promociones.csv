@@ -1,0 +1,16 @@
+﻿id_promocion,id_sku,fecha_inicio,fecha_fin,porcentaje_descuento,tipo_promocion,etl_source_file,etl_loaded_at
+PROMO_001,SKU_500ML,2024-01-10,2024-01-20,10,Campaña estacional,sap_promociones.csv,2026-05-30 00:00:00
+PROMO_002,SKU_500ML,2024-02-12,2024-02-18,12,Descuento directo,sap_promociones.csv,2026-05-30 00:00:00
+PROMO_003,SKU_500ML,2024-07-25,2024-07-31,8,Combo,sap_promociones.csv,2026-05-30 00:00:00
+PROMO_004,SKU_500ML,2024-11-20,2024-11-30,15,Combo,sap_promociones.csv,2026-05-30 00:00:00
+PROMO_005,SKU_500ML,2024-12-18,2024-12-24,10,Campaña estacional,sap_promociones.csv,2026-05-30 00:00:00
+PROMO_006,SKU_1L,2024-01-10,2024-01-20,10,Descuento directo,sap_promociones.csv,2026-05-30 00:00:00
+PROMO_007,SKU_1L,2024-02-12,2024-02-18,12,Combo,sap_promociones.csv,2026-05-30 00:00:00
+PROMO_008,SKU_1L,2024-07-25,2024-07-31,8,Combo,sap_promociones.csv,2026-05-30 00:00:00
+PROMO_009,SKU_1L,2024-11-20,2024-11-30,15,Combo,sap_promociones.csv,2026-05-30 00:00:00
+PROMO_010,SKU_1L,2024-12-18,2024-12-24,10,Combo,sap_promociones.csv,2026-05-30 00:00:00
+PROMO_011,SKU_20L,2024-01-10,2024-01-20,10,Combo,sap_promociones.csv,2026-05-30 00:00:00
+PROMO_012,SKU_20L,2024-02-12,2024-02-18,12,Combo,sap_promociones.csv,2026-05-30 00:00:00
+PROMO_013,SKU_20L,2024-07-25,2024-07-31,8,Descuento directo,sap_promociones.csv,2026-05-30 00:00:00
+PROMO_014,SKU_20L,2024-11-20,2024-11-30,15,Campaña estacional,sap_promociones.csv,2026-05-30 00:00:00
+PROMO_015,SKU_20L,2024-12-18,2024-12-24,10,Combo,sap_promociones.csv,2026-05-30 00:00:00

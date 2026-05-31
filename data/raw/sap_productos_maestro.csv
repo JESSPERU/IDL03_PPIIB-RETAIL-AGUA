@@ -1,0 +1,4 @@
+﻿id_sku,descripcion,categoria,volumen_litros,unidad_medida,formato_envase,costo_unitario_base,precio_lista,stock_seguridad,lead_time_dias,etl_source_file,etl_loaded_at
+SKU_500ML,Agua Botella 500ml,Personal,0.5,unidad,Botella,0.55,1.20,240,2,sap_productos_maestro.csv,2026-05-30 00:00:00
+SKU_1L,Agua Botella 1L,Personal,1.0,unidad,Botella,0.85,2.00,180,2,sap_productos_maestro.csv,2026-05-30 00:00:00
+SKU_20L,Bidón Agua 20L,Familiar,20.0,unidad,Bidón,3.80,7.50,120,3,sap_productos_maestro.csv,2026-05-30 00:00:00

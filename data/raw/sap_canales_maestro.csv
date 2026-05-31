@@ -1,0 +1,5 @@
+﻿id_canal,nombre_canal,tipo_canal,comision_porcentaje,etl_source_file,etl_loaded_at
+CH_01,Tienda Fisica,Offline,0.00,sap_canales_maestro.csv,2026-05-30 00:00:00
+CH_02,WhatsApp,Digital asistido,0.02,sap_canales_maestro.csv,2026-05-30 00:00:00
+CH_03,E-commerce,Digital,0.04,sap_canales_maestro.csv,2026-05-30 00:00:00
+CH_04,Marketplaces,Digital tercero,0.08,sap_canales_maestro.csv,2026-05-30 00:00:00
