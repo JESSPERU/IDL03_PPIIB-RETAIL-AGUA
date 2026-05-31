@@ -1,0 +1,21 @@
+# Entorno virtual
+.venv/
+
+# Credenciales
+.env
+.secrets/
+
+# Logs
+logs/*.log
+
+# Modelos entrenados
+models/*.pkl
+models/*.joblib
+
+# Python
+__pycache__/
+*.pyc
+
+# Sistema
+.DS_Store
+Thumbs.db
