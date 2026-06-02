@@ -1000,7 +1000,13 @@ with tab4:
         fig_heat.update_layout(
             **PLOTLY_TEMPLATE,
             height=220,
-            xaxis=dict(**PLOTLY_TEMPLATE["layout"]["xaxis"], tickangle=-45, tickfont=dict(size=8)),
+            xaxis=dict(
+                tickangle=-45,
+                tickfont=dict(size=8),
+                gridcolor=C_BORDER,
+                linecolor=C_BORDER,
+                tickcolor=C_TEXT_SEC
+            ),
             margin=dict(l=0, r=0, t=10, b=60),
         )
         st.plotly_chart(fig_heat, use_container_width=True)
