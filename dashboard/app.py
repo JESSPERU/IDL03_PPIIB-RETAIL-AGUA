@@ -68,6 +68,21 @@ PLOTLY_TEMPLATE = {
     "plot_bgcolor": "rgba(0,0,0,0)"
 }
 
+def apply_theme(fig):
+
+    fig.update_layout(
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(
+            family="Space Mono",
+            color=C_TEXT_SEC,
+            size=11
+        )
+    )
+
+    return fig
+
+
 # ============================================================
 # CSS GLOBAL  — sin llaves anidadas en f-strings
 # ============================================================
@@ -518,7 +533,7 @@ with tab1:
 
     # ── Línea histórica + predicción superpuesta ─────────────
     fig_hist = go.Figure()
-
+    
     for sku in skus_plot:
         df_s   = ventas_agg[ventas_agg["id_sku"] == sku].sort_values("fecha")
         nombre = sku_map.get(sku, sku)
@@ -609,7 +624,12 @@ with tab1:
     fig_barras.update_layout(
         **PLOTLY_TEMPLATE,
         height=310,
-        xaxis=dict(**PLOTLY_TEMPLATE["layout"]["xaxis"], tickangle=-45),
+        xaxis=dict(
+            tickangle=-45,
+            gridcolor=C_BORDER,
+            linecolor=C_BORDER,
+            tickcolor=C_TEXT_SEC
+        ),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
         margin=dict(l=0, r=0, t=10, b=0),
     )
