@@ -571,17 +571,19 @@ with tab1:
             hovertemplate=f"<b>{nombre} — Predicción</b><br>%{{x|%d %b %Y}}<br>Predicho: %{{y:,.0f}} u<extra></extra>",
         ))
 
-    # Línea "HOY" basada en la fecha máxima de ventas históricas
+    # Línea "HOY" — add_vline/add_vrect requieren string ISO, no pd.Timestamp
     hoy_ts = ventas["fecha"].max() if not ventas.empty else pd.Timestamp.now()
+    hoy_str = hoy_ts.strftime("%Y-%m-%d")
     fig_hist.add_vline(
-        x=hoy_ts, line_width=1, line_dash="dash", line_color=C_AMBER,
+        x=hoy_str, line_width=1, line_dash="dash", line_color=C_AMBER,
         annotation_text="HOY",
         annotation_font=dict(color=C_AMBER, family="Space Mono", size=10),
         annotation_position="top right",
     )
     if not score_f.empty:
         fig_hist.add_vrect(
-            x0=hoy_ts, x1=score_f["fecha_objetivo"].max(),
+            x0=hoy_str,
+            x1=score_f["fecha_objetivo"].max().strftime("%Y-%m-%d"),
             fillcolor=C_AQUA, opacity=0.03, layer="below", line_width=0,
         )
 
