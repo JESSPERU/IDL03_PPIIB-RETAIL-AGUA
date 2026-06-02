@@ -107,8 +107,8 @@ sku = st.sidebar.selectbox(
     "📦 SKU",
     ["Todos"] +
     sorted(
-        score["id_sku"].unique()
-    ).tolist()
+        score["id_sku"].dropna().unique()
+    )
 )
 
 fecha_inicio = st.sidebar.date_input(
