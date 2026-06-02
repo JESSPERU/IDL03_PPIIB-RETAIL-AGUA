@@ -63,37 +63,10 @@ C_TEXT_PRI  = COLORS["text_pri"]
 C_TEXT_SEC  = COLORS["text_sec"]
 C_BORDER    = COLORS["border"]
 
-PLOTLY_TEMPLATE = dict(
-    layout=dict(
-        paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(0,0,0,0)",
-        font=dict(family="'Space Mono', monospace", color=C_TEXT_SEC, size=11),
-        title=dict(font=dict(family="'Barlow Condensed', sans-serif", color=C_TEXT_PRI, size=16)),
-        xaxis=dict(
-            gridcolor=C_BORDER,
-            zerolinecolor=C_BORDER,
-            tickcolor=C_TEXT_SEC,
-            linecolor=C_BORDER,
-        ),
-        yaxis=dict(
-            gridcolor=C_BORDER,
-            zerolinecolor=C_BORDER,
-            tickcolor=C_TEXT_SEC,
-            linecolor=C_BORDER,
-        ),
-        legend=dict(
-            bgcolor="rgba(13,22,40,0.8)",
-            bordercolor=C_BORDER,
-            borderwidth=1,
-            font=dict(color=C_TEXT_SEC, size=10),
-        ),
-        hoverlabel=dict(
-            bgcolor=C_BG_CARD,
-            bordercolor=C_AQUA,
-            font=dict(color=C_TEXT_PRI, family="'Space Mono', monospace"),
-        ),
-    )
-)
+PLOTLY_TEMPLATE = {
+    "paper_bgcolor": "rgba(0,0,0,0)",
+    "plot_bgcolor": "rgba(0,0,0,0)"
+}
 
 # ============================================================
 # CSS GLOBAL  — sin llaves anidadas en f-strings
@@ -606,7 +579,7 @@ with tab1:
         )
 
     fig_hist.update_layout(
-        **PLOTLY_TEMPLATE["layout"],
+        **PLOTLY_TEMPLATE,
         height=390,
         xaxis_title="Fecha", yaxis_title="Unidades",
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
@@ -634,7 +607,7 @@ with tab1:
         labels={"cantidad_vendida": "Unidades", "mes": "Mes", "id_sku": "SKU"},
     )
     fig_barras.update_layout(
-        **PLOTLY_TEMPLATE["layout"],
+        **PLOTLY_TEMPLATE,
         height=310,
         xaxis=dict(**PLOTLY_TEMPLATE["layout"]["xaxis"], tickangle=-45),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
@@ -662,7 +635,7 @@ with tab1:
             hovertemplate=f"<b>{nombre}</b><br>%{{x|%d %b %Y}}<br>Predicción: %{{y:,.0f}} u<extra></extra>",
         ))
     fig_pred.update_layout(
-        **PLOTLY_TEMPLATE["layout"],
+        **PLOTLY_TEMPLATE,
         height=320,
         xaxis_title="Fecha", yaxis_title="Unidades Predichas",
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
@@ -701,7 +674,7 @@ with tab2:
                 mode="lines", opacity=0.55,
             ))
         fig_inv.update_layout(
-            **PLOTLY_TEMPLATE["layout"],
+            **PLOTLY_TEMPLATE,
             height=360,
             xaxis_title="Fecha", yaxis_title="Unidades",
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
@@ -737,7 +710,7 @@ with tab2:
                 annotation_position="right",
             )
         fig_cob.update_layout(
-            **PLOTLY_TEMPLATE["layout"],
+            **PLOTLY_TEMPLATE,
             height=300,
             xaxis_title="Fecha", yaxis_title="Días",
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
@@ -787,7 +760,7 @@ with tab2:
             textfont=dict(family="Space Mono", size=10, color=C_TEXT_PRI),
         ))
         fig_dona.update_layout(
-            **PLOTLY_TEMPLATE["layout"],
+            **PLOTLY_TEMPLATE,
             height=260, showlegend=True,
             legend=dict(font=dict(size=9)),
             margin=dict(l=0, r=0, t=10, b=0),
@@ -806,7 +779,7 @@ with tab2:
             color_continuous_scale=[[0, C_AQUA_DIM], [1, C_AQUA]],
         )
         fig_rep.update_layout(
-            **PLOTLY_TEMPLATE["layout"],
+            **PLOTLY_TEMPLATE,
             height=190, showlegend=False, coloraxis_showscale=False,
             xaxis_title="Unidades", yaxis_title="",
             margin=dict(l=0, r=0, t=6, b=0),
@@ -853,7 +826,7 @@ with tab3:
         secondary_y=True,
     )
     fig_ads.update_layout(
-        **PLOTLY_TEMPLATE["layout"],
+        **PLOTLY_TEMPLATE,
         height=370,
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
         margin=dict(l=0, r=0, t=10, b=0),
@@ -890,7 +863,7 @@ with tab3:
             if t.mode == "lines" else None
         )
         fig_scatter.update_layout(
-            **PLOTLY_TEMPLATE["layout"],
+            **PLOTLY_TEMPLATE,
             height=340, margin=dict(l=0, r=0, t=10, b=0),
         )
         st.plotly_chart(fig_scatter, use_container_width=True)
@@ -931,7 +904,7 @@ with tab3:
             labels={"plataforma_origen": "", "inversion_usd": "USD"},
         )
         fig_plat.update_layout(
-            **PLOTLY_TEMPLATE["layout"],
+            **PLOTLY_TEMPLATE,
             showlegend=False, height=220,
             margin=dict(l=0, r=0, t=6, b=0),
         )
@@ -1000,7 +973,7 @@ with tab4:
             hovertemplate="SKU: %{y}<br>Semana: %{x}<br>Nivel: %{z:.2f}<extra></extra>",
         ))
         fig_heat.update_layout(
-            **PLOTLY_TEMPLATE["layout"],
+            **PLOTLY_TEMPLATE,
             height=220,
             xaxis=dict(**PLOTLY_TEMPLATE["layout"]["xaxis"], tickangle=-45, tickfont=dict(size=8)),
             margin=dict(l=0, r=0, t=10, b=60),
