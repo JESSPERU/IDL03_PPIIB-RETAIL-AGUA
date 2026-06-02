@@ -16,7 +16,7 @@ import datetime
 # ============================================================
 
 st.set_page_config(
-    page_title="AquaIntel · Dashboard",
+    page_title="Control de Inventario Retail de Agua",
     page_icon=":droplet:",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -473,6 +473,49 @@ p, li, span {{ color: {C_TEXT_SEC}; }}
     text-transform: uppercase;
     margin-bottom: 4px;
 }}
+
+/* ── Streamlit top toolbar (Share, star, fork, kebab) ── */
+[data-testid="stHeader"],
+header[data-testid="stHeader"] {{
+    background: {C_BG_DARK} !important;
+    border-bottom: 1px solid {C_BORDER} !important;
+}}
+[data-testid="stHeader"] * {{
+    color: {C_TEXT_SEC} !important;
+}}
+/* Deploy / Share button */
+[data-testid="stHeader"] button,
+[data-testid="stHeader"] a,
+.stDeployButton,
+[data-testid="stToolbar"],
+[data-testid="stToolbar"] * {{
+    background: transparent !important;
+    color: {C_TEXT_SEC} !important;
+    border-color: {C_BORDER} !important;
+}}
+/* Top-right action bar (the Share + icons row) */
+[data-testid="stActionButtonContainer"],
+[data-testid="stActionButtonContainer"] * {{
+    background: {C_BG_DARK} !important;
+    color: {C_TEXT_PRI} !important;
+}}
+/* "Share" button specifically */
+[data-testid="stShareButton"],
+[data-testid="stShareButton"] span {{
+    color: {C_AQUA} !important;
+    background: transparent !important;
+}}
+/* Main view top padding / gap that shows white */
+[data-testid="stAppViewBlockContainer"] {{
+    padding-top: 1rem !important;
+}}
+/* Catch-all for any remaining white bar above the sidebar */
+.stApp > header,
+.stApp [data-testid="stDecoration"],
+[data-testid="stDecoration"] {{
+    background: {C_BG_DARK} !important;
+    display: none !important;
+}}
 </style>
 """
 
@@ -549,9 +592,9 @@ with st.sidebar:
         f" border:1px solid {C_AQUA}50; border-radius:14px; color:{C_AQUA}; margin-bottom:10px;'>"
         f"{icon('wave', size=28, color=C_AQUA)}"
         f"</div>"
-        f"<div style='font-family:Barlow Condensed,sans-serif; font-size:1.6rem;"
-        f" font-weight:800; color:{C_TEXT_PRI};'>AQUA"
-        f"<span style='color:{C_AQUA};'>INTEL</span></div>"
+        f"<div style='font-family:Barlow Condensed,sans-serif; font-size:1.2rem;"
+        f" font-weight:800; color:{C_TEXT_PRI}; line-height:1.2; text-align:center;'>CONTROL DE INVENTARIO"
+        f"<div style='color:{C_AQUA}; font-size:1.05rem;'>RETAIL DE AGUA</div></div>"
         f"<div style='font-family:Space Mono,monospace; font-size:0.55rem;"
         f" color:{C_TEXT_SEC}; letter-spacing:0.15em; text-transform:uppercase;"
         f" margin-top:4px;'>Retail Agua · Capa Gold</div>"
@@ -705,8 +748,8 @@ st.markdown(
     f"<div class='brand-header'>"
     f"<div class='brand-icon'>{icon('wave', size=30, color=C_AQUA)}</div>"
     f"<div>"
-    f"<div class='brand-title'>AQUA<span>INTEL</span></div>"
-    f"<div class='brand-sub'>Dashboard Predictivo Retail Agua · Proyecto Productivo II</div>"
+    f"<div class='brand-title'>CONTROL DE INVENTARIO <span>RETAIL DE AGUA</span></div>"
+    f"<div class='brand-sub'>Dashboard Predictivo · Proyecto Productivo II</div>"
     f"</div>"
     f"</div>",
     unsafe_allow_html=True,
@@ -1423,7 +1466,7 @@ st.markdown(
     f" font-family:Space Mono,monospace; font-size:0.55rem;"
     f" color:{C_TEXT_SEC}; letter-spacing:0.1em;'>"
     f"{icon('dot', size=7, color=DATA_DOT_COLOR)}"
-    f"<span>AQUA<span style='color:{C_AQUA};'>INTEL</span>"
+    f"<span>Control de Inventario <span style='color:{C_AQUA};'>Retail de Agua</span>"
     f" &nbsp;·&nbsp; Proyecto Productivo II &nbsp;·&nbsp;"
     f" Capa Gold · Supabase (PostgreSQL) &nbsp;·&nbsp;"
     f" {DATA_SOURCE}</span>"
