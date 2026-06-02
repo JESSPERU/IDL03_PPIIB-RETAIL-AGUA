@@ -870,8 +870,13 @@ with tab3:
     col_sc1, col_sc2 = st.columns([2, 1])
     with col_sc1:
         fig_scatter = px.scatter(
-            df_ads, x="inversion_usd", y="ventas", trendline="ols",
-            labels={"inversion_usd": "Inversión Ads (USD)", "ventas": "Ventas (u)"},
+            df_ads,
+            x="inversion_usd",
+            y="ventas",
+            labels={
+                "inversion_usd": "Inversión Ads (USD)",
+                "ventas": "Ventas (u)"
+            },
             color_discrete_sequence=[C_AQUA],
         )
         fig_scatter.update_traces(
