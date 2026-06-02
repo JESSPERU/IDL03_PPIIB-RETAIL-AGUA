@@ -651,7 +651,7 @@ with tab1:
             x=df_p["fecha_objetivo"], y=df_p["cantidad_predicha"],
             name=nombre, fill="tozeroy", mode="lines",
             line=dict(color=color, width=2),
-            fillcolor="rgba(0,212,232,0.15)"
+            fillcolor="rgba(0,212,232,0.15)",
             hovertemplate=f"<b>{nombre}</b><br>%{{x|%d %b %Y}}<br>Predicción: %{{y:,.0f}} u<extra></extra>",
         ))
     fig_pred.update_layout(
