@@ -9,7 +9,7 @@ from utils.logger import get_logger
 logger = get_logger("export_gold")
 engine = get_engine()
 
-OUTPUT_DIR = Path("data/gold")
+OUTPUT_DIR = Path("data/Gold_Final")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 GOLD_TABLES = [
