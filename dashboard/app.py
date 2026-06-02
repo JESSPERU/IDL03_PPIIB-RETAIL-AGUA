@@ -651,7 +651,7 @@ with tab1:
             x=df_p["fecha_objetivo"], y=df_p["cantidad_predicha"],
             name=nombre, fill="tozeroy", mode="lines",
             line=dict(color=color, width=2),
-            fillcolor=color + "14",
+            fillcolor="rgba(0,212,232,0.15)"
             hovertemplate=f"<b>{nombre}</b><br>%{{x|%d %b %Y}}<br>Predicción: %{{y:,.0f}} u<extra></extra>",
         ))
     fig_pred.update_layout(
@@ -716,7 +716,7 @@ with tab2:
                 x=df_s["fecha_objetivo"], y=df_s["dias_cobertura"],
                 name=nombre, fill="tozeroy", mode="lines",
                 line=dict(color=color, width=2),
-                fillcolor=color + "18",
+                fillcolor="rgba(0,212,232,0.18)"
             ))
         for nivel, color_sem, label in [
             (2,  C_RED,   "🔴 Quiebre"),
