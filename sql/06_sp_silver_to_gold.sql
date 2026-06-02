@@ -395,6 +395,11 @@ BEGIN
 
     -- ========================================================
     -- 7. ML Score Input inicial
+    -- Objetivo:
+    -- Crear una fila futura por SKU para scoring.
+    -- IMPORTANTE:
+    -- Las variables calendario deben calcularse con fecha_objetivo,
+    -- no copiarse del último día histórico.
     -- ========================================================
 
     INSERT INTO gold.ml_score_input (
@@ -429,47 +434,143 @@ BEGIN
         ads_lag1,
         ads_lag3
     )
+    WITH ult AS (
+        SELECT
+            d.*,
+            (d.fecha + INTERVAL '1 day')::DATE AS fecha_objetivo_calc,
+            ROW_NUMBER() OVER (
+                PARTITION BY d.id_sku
+                ORDER BY d.fecha DESC
+            ) AS rn
+        FROM gold.ml_dataset d
+    ),
+    base_score AS (
+        SELECT
+            fecha_objetivo_calc,
+            id_sku,
+            categoria,
+            volumen_litros,
+            formato_envase,
+
+            -- Para predecir el día siguiente, el stock de cierre anterior
+            -- funciona como stock de apertura estimado.
+            stock_disponible_cierre AS stock_apertura,
+
+            0 AS ingresos_almacen,
+
+            precio_unitario_promedio AS precio_unitario_estimado,
+            descuento_total AS descuento_estimado,
+
+            inversion_ads_total AS inversion_ads_planificada,
+            clics_total AS clics_estimados,
+            impresiones_total AS impresiones_estimadas,
+
+            temperatura_promedio_celsius AS temperatura_promedio_estimada,
+            temperatura_maxima_celsius AS temperatura_maxima_estimada,
+            humedad_porcentaje AS humedad_porcentaje_estimada,
+            precipitacion_mm AS precipitacion_mm_estimada,
+            alerta_ola_calor,
+
+            cantidad_vendida_total AS ventas_lag1,
+            ventas_lag7,
+            ventas_roll7,
+            inversion_ads_total AS ads_lag1,
+            ads_lag3
+        FROM ult
+        WHERE rn = 1
+    )
     SELECT
-        (fecha + INTERVAL '1 day')::DATE AS fecha_objetivo,
+        fecha_objetivo_calc AS fecha_objetivo,
         id_sku,
         categoria,
         volumen_litros,
         formato_envase,
-        stock_disponible_cierre AS stock_apertura,
-        0 AS ingresos_almacen,
-        precio_unitario_promedio AS precio_unitario_estimado,
-        descuento_total AS descuento_estimado,
-        inversion_ads_total AS inversion_ads_planificada,
-        clics_total AS clics_estimados,
-        impresiones_total AS impresiones_estimadas,
-        temperatura_promedio_celsius AS temperatura_promedio_estimada,
-        temperatura_maxima_celsius AS temperatura_maxima_estimada,
-        humedad_porcentaje AS humedad_porcentaje_estimada,
-        precipitacion_mm AS precipitacion_mm_estimada,
+        stock_apertura,
+        ingresos_almacen,
+        precio_unitario_estimado,
+        descuento_estimado,
+        inversion_ads_planificada,
+        clics_estimados,
+        impresiones_estimadas,
+        temperatura_promedio_estimada,
+        temperatura_maxima_estimada,
+        humedad_porcentaje_estimada,
+        precipitacion_mm_estimada,
         alerta_ola_calor,
-        numero_dia_semana,
-        mes,
-        trimestre,
-        es_fin_de_semana,
-        es_feriado,
-        es_quincena,
-        es_fin_mes,
-        temporada,
-        cantidad_vendida_total AS ventas_lag1,
+
+        -- Calendario calculado según la fecha futura
+        EXTRACT(ISODOW FROM fecha_objetivo_calc)::INTEGER AS numero_dia_semana,
+        EXTRACT(MONTH FROM fecha_objetivo_calc)::INTEGER AS mes,
+        EXTRACT(QUARTER FROM fecha_objetivo_calc)::INTEGER AS trimestre,
+
+        CASE
+            WHEN EXTRACT(ISODOW FROM fecha_objetivo_calc)::INTEGER IN (6, 7)
+            THEN TRUE ELSE FALSE
+        END AS es_fin_de_semana,
+
+        CASE
+            WHEN TO_CHAR(fecha_objetivo_calc, 'MM-DD') = '01-01'
+            THEN TRUE
+            ELSE FALSE
+        END AS es_feriado,
+
+        CASE
+            WHEN EXTRACT(DAY FROM fecha_objetivo_calc)::INTEGER IN (15, 30)
+            THEN TRUE
+            ELSE FALSE
+        END AS es_quincena,
+
+        CASE
+            WHEN fecha_objetivo_calc =
+                 (
+                    DATE_TRUNC('month', fecha_objetivo_calc)::DATE
+                    + INTERVAL '1 month - 1 day'
+                 )::DATE
+            THEN TRUE
+            ELSE FALSE
+        END AS es_fin_mes,
+
+        CASE
+            WHEN EXTRACT(MONTH FROM fecha_objetivo_calc)::INTEGER IN (12, 1, 2, 3)
+                THEN 'Verano'
+            WHEN EXTRACT(MONTH FROM fecha_objetivo_calc)::INTEGER IN (4, 5)
+                THEN 'Otoño'
+            WHEN EXTRACT(MONTH FROM fecha_objetivo_calc)::INTEGER IN (6, 7, 8, 9)
+                THEN 'Invierno'
+            ELSE 'Primavera'
+        END AS temporada,
+
+        ventas_lag1,
         ventas_lag7,
         ventas_roll7,
-        inversion_ads_total AS ads_lag1,
+        ads_lag1,
         ads_lag3
-    FROM (
-        SELECT
-            d.*,
-            ROW_NUMBER() OVER (
-                PARTITION BY id_sku
-                ORDER BY fecha DESC
-            ) AS rn
-        FROM gold.ml_dataset d
-    ) ult
-    WHERE rn = 1;
+    FROM base_score;
 
 END;
 $$;
+
+
+CALL gold.sp_silver_to_gold();
+
+SELECT 'dim_producto' AS tabla, COUNT(*) AS total FROM gold.dim_producto
+UNION ALL
+SELECT 'dim_tiempo', COUNT(*) FROM gold.dim_tiempo
+UNION ALL
+SELECT 'fact_ventas_diarias', COUNT(*) FROM gold.fact_ventas_diarias
+UNION ALL
+SELECT 'fact_inventario', COUNT(*) FROM gold.fact_inventario
+UNION ALL
+SELECT 'fact_marketing', COUNT(*) FROM gold.fact_marketing
+UNION ALL
+SELECT 'ml_dataset', COUNT(*) FROM gold.ml_dataset
+UNION ALL
+SELECT 'ml_score_input', COUNT(*) FROM gold.ml_score_input
+UNION ALL
+SELECT 'ml_score_output', COUNT(*) FROM gold.ml_score_output
+UNION ALL
+SELECT 'ml_feature_importance', COUNT(*) FROM gold.ml_feature_importance;
+
+SELECT *
+FROM gold.ml_score_input
+ORDER BY fecha_objetivo, id_sku;
