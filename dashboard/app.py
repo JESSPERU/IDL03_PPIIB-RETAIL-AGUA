@@ -571,20 +571,38 @@ with tab1:
             hovertemplate=f"<b>{nombre} — Predicción</b><br>%{{x|%d %b %Y}}<br>Predicho: %{{y:,.0f}} u<extra></extra>",
         ))
 
-    # Línea "HOY" — add_vline/add_vrect requieren string ISO, no pd.Timestamp
-    hoy_ts = ventas["fecha"].max() if not ventas.empty else pd.Timestamp.now()
+    # Línea "HOY" — usamos add_shape + add_annotation manualmente para evitar
+    # el bug de plotly.shapeannotation._mean() en Plotly + Python 3.14
+    hoy_ts  = ventas["fecha"].max() if not ventas.empty else pd.Timestamp.now()
     hoy_str = hoy_ts.strftime("%Y-%m-%d")
-    fig_hist.add_vline(
-        x=hoy_str, line_width=1, line_dash="dash", line_color=C_AMBER,
-        annotation_text="HOY",
-        annotation_font=dict(color=C_AMBER, family="Space Mono", size=10),
-        annotation_position="top right",
+
+    fig_hist.add_shape(
+        type="line",
+        x0=hoy_str, x1=hoy_str,
+        y0=0, y1=1,
+        xref="x", yref="paper",
+        line=dict(color=C_AMBER, width=1, dash="dash"),
+    )
+    fig_hist.add_annotation(
+        x=hoy_str, y=1,
+        xref="x", yref="paper",
+        text="HOY",
+        showarrow=False,
+        xanchor="left",
+        yanchor="bottom",
+        font=dict(color=C_AMBER, family="Space Mono", size=10),
     )
     if not score_f.empty:
-        fig_hist.add_vrect(
-            x0=hoy_str,
-            x1=score_f["fecha_objetivo"].max().strftime("%Y-%m-%d"),
-            fillcolor=C_AQUA, opacity=0.03, layer="below", line_width=0,
+        x1_str = score_f["fecha_objetivo"].max().strftime("%Y-%m-%d")
+        fig_hist.add_shape(
+            type="rect",
+            x0=hoy_str, x1=x1_str,
+            y0=0, y1=1,
+            xref="x", yref="paper",
+            fillcolor=C_AQUA,
+            opacity=0.03,
+            layer="below",
+            line_width=0,
         )
 
     fig_hist.update_layout(
