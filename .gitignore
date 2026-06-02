@@ -9,7 +9,6 @@
 logs/*.log
 
 # Modelos entrenados
-models/*.pkl
 models/*.joblib
 
 # Python
