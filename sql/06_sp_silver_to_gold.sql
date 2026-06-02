@@ -394,12 +394,11 @@ BEGIN
       AND id_sku IS NOT NULL;
 
     -- ========================================================
-    -- 7. ML Score Input inicial
+    -- 7. ML Score Input 2026
     -- Objetivo:
-    -- Crear una fila futura por SKU para scoring.
-    -- IMPORTANTE:
-    -- Las variables calendario deben calcularse con fecha_objetivo,
-    -- no copiarse del último día histórico.
+    -- Generar input futuro para todo el año 2026.
+    -- Resultado esperado:
+    -- 365 días x 3 SKUs = 1095 filas.
     -- ========================================================
 
     INSERT INTO gold.ml_score_input (
@@ -434,96 +433,127 @@ BEGIN
         ads_lag1,
         ads_lag3
     )
-    WITH ult AS (
+    WITH fechas_2026 AS (
+        SELECT
+            GENERATE_SERIES(
+                DATE '2026-01-01',
+                DATE '2026-12-31',
+                INTERVAL '1 day'
+            )::DATE AS fecha_objetivo
+    ),
+
+    ultimo_sku AS (
         SELECT
             d.*,
-            (d.fecha + INTERVAL '1 day')::DATE AS fecha_objetivo_calc,
             ROW_NUMBER() OVER (
                 PARTITION BY d.id_sku
                 ORDER BY d.fecha DESC
             ) AS rn
         FROM gold.ml_dataset d
     ),
-    base_score AS (
+
+    base_sku AS (
         SELECT
-            fecha_objetivo_calc,
-            id_sku,
-            categoria,
-            volumen_litros,
-            formato_envase,
-
-            -- Para predecir el día siguiente, el stock de cierre anterior
-            -- funciona como stock de apertura estimado.
-            stock_disponible_cierre AS stock_apertura,
-
-            0 AS ingresos_almacen,
-
-            precio_unitario_promedio AS precio_unitario_estimado,
-            descuento_total AS descuento_estimado,
-
-            inversion_ads_total AS inversion_ads_planificada,
-            clics_total AS clics_estimados,
-            impresiones_total AS impresiones_estimadas,
-
-            temperatura_promedio_celsius AS temperatura_promedio_estimada,
-            temperatura_maxima_celsius AS temperatura_maxima_estimada,
-            humedad_porcentaje AS humedad_porcentaje_estimada,
-            precipitacion_mm AS precipitacion_mm_estimada,
-            alerta_ola_calor,
-
-            cantidad_vendida_total AS ventas_lag1,
-            ventas_lag7,
-            ventas_roll7,
-            inversion_ads_total AS ads_lag1,
-            ads_lag3
-        FROM ult
+            *
+        FROM ultimo_sku
         WHERE rn = 1
-    )
-    SELECT
-        fecha_objetivo_calc AS fecha_objetivo,
-        id_sku,
-        categoria,
-        volumen_litros,
-        formato_envase,
-        stock_apertura,
-        ingresos_almacen,
-        precio_unitario_estimado,
-        descuento_estimado,
-        inversion_ads_planificada,
-        clics_estimados,
-        impresiones_estimadas,
-        temperatura_promedio_estimada,
-        temperatura_maxima_estimada,
-        humedad_porcentaje_estimada,
-        precipitacion_mm_estimada,
-        alerta_ola_calor,
+    ),
 
-        -- Calendario calculado según la fecha futura
-        EXTRACT(ISODOW FROM fecha_objetivo_calc)::INTEGER AS numero_dia_semana,
-        EXTRACT(MONTH FROM fecha_objetivo_calc)::INTEGER AS mes,
-        EXTRACT(QUARTER FROM fecha_objetivo_calc)::INTEGER AS trimestre,
+    promedios_historicos AS (
+        SELECT
+            id_sku,
+            mes,
+            numero_dia_semana,
+
+            AVG(cantidad_vendida_total) AS promedio_ventas,
+            AVG(ventas_lag7) AS promedio_ventas_lag7,
+            AVG(ventas_roll7) AS promedio_ventas_roll7,
+
+            AVG(precio_unitario_promedio) AS promedio_precio,
+            AVG(descuento_total) AS promedio_descuento,
+
+            AVG(inversion_ads_total) AS promedio_ads,
+            AVG(clics_total) AS promedio_clics,
+            AVG(impresiones_total) AS promedio_impresiones,
+
+            AVG(temperatura_promedio_celsius) AS promedio_temp_prom,
+            AVG(temperatura_maxima_celsius) AS promedio_temp_max,
+            AVG(humedad_porcentaje) AS promedio_humedad,
+            AVG(precipitacion_mm) AS promedio_precipitacion,
+
+            AVG(ads_lag1) AS promedio_ads_lag1,
+            AVG(ads_lag3) AS promedio_ads_lag3
+        FROM gold.ml_dataset
+        GROUP BY
+            id_sku,
+            mes,
+            numero_dia_semana
+    )
+
+    SELECT
+        f.fecha_objetivo,
+        b.id_sku,
+        b.categoria,
+        b.volumen_litros,
+        b.formato_envase,
+
+        -- Stock inicial estimado:
+        -- se usa el último stock de cierre conocido como punto de partida.
+        b.stock_disponible_cierre AS stock_apertura,
+
+        -- Si no existe plan de reposición futuro, se deja en cero.
+        0 AS ingresos_almacen,
+
+        COALESCE(ph.promedio_precio, b.precio_unitario_promedio) AS precio_unitario_estimado,
+        COALESCE(ph.promedio_descuento, 0) AS descuento_estimado,
+
+        COALESCE(ph.promedio_ads, 0) AS inversion_ads_planificada,
+        COALESCE(ROUND(ph.promedio_clics), 0)::INTEGER AS clics_estimados,
+        COALESCE(ROUND(ph.promedio_impresiones), 0)::INTEGER AS impresiones_estimadas,
+
+        COALESCE(ph.promedio_temp_prom, b.temperatura_promedio_celsius) AS temperatura_promedio_estimada,
+        COALESCE(ph.promedio_temp_max, b.temperatura_maxima_celsius) AS temperatura_maxima_estimada,
+        COALESCE(ph.promedio_humedad, b.humedad_porcentaje) AS humedad_porcentaje_estimada,
+        COALESCE(ph.promedio_precipitacion, b.precipitacion_mm) AS precipitacion_mm_estimada,
 
         CASE
-            WHEN EXTRACT(ISODOW FROM fecha_objetivo_calc)::INTEGER IN (6, 7)
-            THEN TRUE ELSE FALSE
+            WHEN COALESCE(ph.promedio_temp_max, b.temperatura_maxima_celsius) >= 28
+            THEN TRUE
+            ELSE FALSE
+        END AS alerta_ola_calor,
+
+        EXTRACT(ISODOW FROM f.fecha_objetivo)::INTEGER AS numero_dia_semana,
+        EXTRACT(MONTH FROM f.fecha_objetivo)::INTEGER AS mes,
+        EXTRACT(QUARTER FROM f.fecha_objetivo)::INTEGER AS trimestre,
+
+        CASE
+            WHEN EXTRACT(ISODOW FROM f.fecha_objetivo)::INTEGER IN (6, 7)
+            THEN TRUE
+            ELSE FALSE
         END AS es_fin_de_semana,
 
         CASE
-            WHEN TO_CHAR(fecha_objetivo_calc, 'MM-DD') = '01-01'
+            WHEN TO_CHAR(f.fecha_objetivo, 'MM-DD') IN (
+                '01-01',
+                '05-01',
+                '07-28',
+                '07-29',
+                '12-25'
+            )
             THEN TRUE
             ELSE FALSE
         END AS es_feriado,
 
         CASE
-            WHEN EXTRACT(DAY FROM fecha_objetivo_calc)::INTEGER IN (15, 30)
+            WHEN EXTRACT(DAY FROM f.fecha_objetivo)::INTEGER IN (15, 30)
             THEN TRUE
             ELSE FALSE
         END AS es_quincena,
 
         CASE
-            WHEN fecha_objetivo_calc =
+            WHEN f.fecha_objetivo =
                  (
-                    DATE_TRUNC('month', fecha_objetivo_calc)::DATE
+                    DATE_TRUNC('month', f.fecha_objetivo)::DATE
                     + INTERVAL '1 month - 1 day'
                  )::DATE
             THEN TRUE
@@ -531,46 +561,25 @@ BEGIN
         END AS es_fin_mes,
 
         CASE
-            WHEN EXTRACT(MONTH FROM fecha_objetivo_calc)::INTEGER IN (12, 1, 2, 3)
+            WHEN EXTRACT(MONTH FROM f.fecha_objetivo)::INTEGER IN (12, 1, 2, 3)
                 THEN 'Verano'
-            WHEN EXTRACT(MONTH FROM fecha_objetivo_calc)::INTEGER IN (4, 5)
+            WHEN EXTRACT(MONTH FROM f.fecha_objetivo)::INTEGER IN (4, 5)
                 THEN 'Otoño'
-            WHEN EXTRACT(MONTH FROM fecha_objetivo_calc)::INTEGER IN (6, 7, 8, 9)
+            WHEN EXTRACT(MONTH FROM f.fecha_objetivo)::INTEGER IN (6, 7, 8, 9)
                 THEN 'Invierno'
             ELSE 'Primavera'
         END AS temporada,
 
-        ventas_lag1,
-        ventas_lag7,
-        ventas_roll7,
-        ads_lag1,
-        ads_lag3
-    FROM base_score;
+        COALESCE(ROUND(ph.promedio_ventas), b.cantidad_vendida_total)::INTEGER AS ventas_lag1,
+        COALESCE(ROUND(ph.promedio_ventas_lag7), b.ventas_lag7)::INTEGER AS ventas_lag7,
+        COALESCE(ph.promedio_ventas_roll7, b.ventas_roll7) AS ventas_roll7,
 
-END;
-$$;
+        COALESCE(ph.promedio_ads_lag1, b.ads_lag1) AS ads_lag1,
+        COALESCE(ph.promedio_ads_lag3, b.ads_lag3) AS ads_lag3
 
-
-CALL gold.sp_silver_to_gold();
-
-SELECT 'dim_producto' AS tabla, COUNT(*) AS total FROM gold.dim_producto
-UNION ALL
-SELECT 'dim_tiempo', COUNT(*) FROM gold.dim_tiempo
-UNION ALL
-SELECT 'fact_ventas_diarias', COUNT(*) FROM gold.fact_ventas_diarias
-UNION ALL
-SELECT 'fact_inventario', COUNT(*) FROM gold.fact_inventario
-UNION ALL
-SELECT 'fact_marketing', COUNT(*) FROM gold.fact_marketing
-UNION ALL
-SELECT 'ml_dataset', COUNT(*) FROM gold.ml_dataset
-UNION ALL
-SELECT 'ml_score_input', COUNT(*) FROM gold.ml_score_input
-UNION ALL
-SELECT 'ml_score_output', COUNT(*) FROM gold.ml_score_output
-UNION ALL
-SELECT 'ml_feature_importance', COUNT(*) FROM gold.ml_feature_importance;
-
-SELECT *
-FROM gold.ml_score_input
-ORDER BY fecha_objetivo, id_sku;
+    FROM fechas_2026 f
+    CROSS JOIN base_sku b
+    LEFT JOIN promedios_historicos ph
+        ON ph.id_sku = b.id_sku
+       AND ph.mes = EXTRACT(MONTH FROM f.fecha_objetivo)::INTEGER
+       AND ph.numero_dia_semana = EXTRACT(ISODOW FROM f.fecha_objetivo)::INTEGER;
