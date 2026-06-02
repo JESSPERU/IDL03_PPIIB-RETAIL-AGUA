@@ -583,3 +583,5 @@ BEGIN
         ON ph.id_sku = b.id_sku
        AND ph.mes = EXTRACT(MONTH FROM f.fecha_objetivo)::INTEGER
        AND ph.numero_dia_semana = EXTRACT(ISODOW FROM f.fecha_objetivo)::INTEGER;
+    END;
+    $$;
